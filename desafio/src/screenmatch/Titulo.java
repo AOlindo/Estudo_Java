@@ -1,22 +1,20 @@
 package screenmatch;
 
-import com.google.gson.annotations.SerializedName;
+import screenmatch.exceptions.ErroDeConversaoDeAnoException;
 
-public class Titulo implements Comparable<Titulo>{
+public class Titulo implements Comparable<Titulo> {
 
-	@SerializedName("Title")
 	private String nome;
-	@SerializedName("Year")
 	private int anoDeLancamento;
 	private boolean incluidoNoPlano;
 	private double somaDasAvaliacoes;
 	private int totalDeAvaliacoes;
 	private int duracaoEmMinutos;
-	
+
 	public Titulo() {
-		
+
 	}
-	
+
 	public Titulo(String nome, int anoDeLancamento) {
 		this.nome = nome;
 		this.anoDeLancamento = anoDeLancamento;
@@ -24,14 +22,31 @@ public class Titulo implements Comparable<Titulo>{
 	
 	public Titulo(TituloOmdb meuTituloOmdb) {
 		this.nome = meuTituloOmdb.title();
+		if(meuTituloOmdb.year().length() > 4) {
+			throw new ErroDeConversaoDeAnoException("Não consegui converter o ano porque tem mais de 04 caracteres");
+		}
 		this.anoDeLancamento = Integer.valueOf(meuTituloOmdb.year());
-		this.duracaoEmMinutos = Integer.valueOf(meuTituloOmdb.runtime().substring(0, 2));
+		this.duracaoEmMinutos = Integer.valueOf(meuTituloOmdb.runtime().substring(0, 3));
 	}
+//  A maneira que eu fiz:
+	
+//	public Titulo(TituloOmdb meuTituloOmdb) {
+//		this.nome = meuTituloOmdb.title();
+//		try {
+//			if (anoDeLancamento > 4) {
+//				
+//			}
+//			this.duracaoEmMinutos = Integer.valueOf(meuTituloOmdb.runtime().substring(0, 3));
+//		} catch (NumberFormatException e) {
+//			System.out.println("Erro no ano de lançamento: " + e.getMessage());;
+//		}
+		
+	
 
 	public void exibeFichaTecnica() {
 		System.out.println("Nome: " + getNome());
 		System.out.println("Ano de lançamento: " + getAnoDeLancamento());
-		System.out.println("Tempo de duração: "  + getDuracaoEmMinutos());
+		System.out.println("Tempo de duração: " + getDuracaoEmMinutos());
 	}
 
 	public void avalia(double nota) {
@@ -85,7 +100,6 @@ public class Titulo implements Comparable<Titulo>{
 		this.duracaoEmMinutos = duracaoEmMinutos;
 	}
 
-	
 	@Override
 	public String toString() {
 		return "Titulo [Nome = " + nome + ", Ano de lançamento = " + anoDeLancamento + ", Duracao em minutos = "
@@ -96,7 +110,5 @@ public class Titulo implements Comparable<Titulo>{
 	public int compareTo(Titulo outroTitulo) {
 		return this.getNome().compareTo(outroTitulo.getNome());
 	}
-	
-	
 
 }
