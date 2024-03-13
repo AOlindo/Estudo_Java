@@ -1,5 +1,6 @@
 package br.com.olindo.estoquelivraria.model;
 
+import br.com.olindo.estoquelivraria.dto.AtualizarCategoriaDto;
 import br.com.olindo.estoquelivraria.dto.CategoriaDto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,27 +16,36 @@ public class Categoria {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
-	
+
 	public Categoria() {
-		
+
 	}
+
 	public Categoria(CategoriaDto dto) {
-		this.id = dto.id();
-		this.nome = dto.nome();
+		this.id = dto.getId();
+		this.nome = dto.getNome();
 	}
-	
+
+	public void atualizarCategoria(AtualizarCategoriaDto categoria) {
+		if (categoria.nome() != null) {
+			this.nome = categoria.nome();
+		}
+	}
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
-	
+
 }
