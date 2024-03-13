@@ -10,6 +10,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -26,8 +27,8 @@ public class Livro {
 	@Column(name = "ano_publicacao")
 	private Integer anoPublicacao;
 
-	@Enumerated(EnumType.STRING)
-	private Genero genero;
+	@ManyToOne
+	private Categoria categoria;
 
 	@Column(name = "numero_paginas")
 	private Integer numeroPaginas;
@@ -45,7 +46,7 @@ public class Livro {
 		this.autor = dto.getAutor();
 		this.isbn = dto.getIsbn();
 		this.anoPublicacao = dto.getAnoPublicacao();
-		this.genero = dto.getGenero();
+		this.categoria = dto.getCategoria();
 		this.numeroPaginas = dto.getNumeroPaginas();
 		this.editora = dto.getEditora();
 		this.preco = dto.getPreco();
@@ -92,13 +93,6 @@ public class Livro {
 		this.anoPublicacao = anoPublicacao;
 	}
 
-	public Genero getGenero() {
-		return genero;
-	}
-
-	public void setGenero(Genero genero) {
-		this.genero = genero;
-	}
 
 	public Integer getNumeroPaginas() {
 		return numeroPaginas;

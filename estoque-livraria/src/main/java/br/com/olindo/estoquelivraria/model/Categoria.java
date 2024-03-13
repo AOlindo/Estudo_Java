@@ -1,25 +1,28 @@
 package br.com.olindo.estoquelivraria.model;
 
-import jakarta.persistence.CascadeType;
+import br.com.olindo.estoquelivraria.dto.CategoriaDto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "fornecedores")
-public class Fornecedor extends DadosPessoais {
+@Table(name = "categoria")
+public class Categoria {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	private String nome;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "endereco_id")
-	private Endereco endereco;
+	public Categoria() {
+		
+	}
+	public Categoria(CategoriaDto dto) {
+		this.id = dto.id();
+		this.nome = dto.nome();
+	}
 	
 	public Long getId() {
 		return id;
@@ -27,11 +30,11 @@ public class Fornecedor extends DadosPessoais {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Endereco getEndereco() {
-		return endereco;
+	public String getNome() {
+		return nome;
 	}
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	
 	
