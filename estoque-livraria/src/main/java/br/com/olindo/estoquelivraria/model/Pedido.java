@@ -22,6 +22,7 @@ public class Pedido {
 	@ManyToOne
 	@JoinColumn(name = "livro_id")
 	private Livro livro;
+	
 	private Integer quantidade;
 	private Double precoUni;
 	

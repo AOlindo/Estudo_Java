@@ -5,7 +5,7 @@ public enum Genero {
 	RELIGIOSO,
 	CONTOS, 
 	ROMANCE, 
-	FICÇÃO,
+	FICCAO,
 	BIOGRAFIA,
 	AUTOAJUDA,
 	SUSPENSE,

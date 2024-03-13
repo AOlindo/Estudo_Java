@@ -1,9 +1,14 @@
 package br.com.olindo.estoquelivraria.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.MappedSuperclass;
+
+@MappedSuperclass
 public class DadosPessoais {
 
 	private String nome;
 	private String telefone;
+	@Column(unique = true)
 	private String email;
 	
 	public String getNome() {
