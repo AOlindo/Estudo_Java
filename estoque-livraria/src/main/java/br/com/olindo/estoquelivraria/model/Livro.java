@@ -18,7 +18,6 @@ import jakarta.persistence.Table;
 public class Livro {
 
 	@Id
-	@Column(name = "id_livro")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String titulo;

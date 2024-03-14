@@ -1,5 +1,6 @@
 package br.com.olindo.estoquelivraria.model;
 
+import br.com.olindo.estoquelivraria.dto.ClienteDto;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,6 +22,19 @@ public class Cliente extends DadosPessoais {
 	@JoinColumn(name = "endereco_id")
 	private Endereco endereco;
 	
+	public Cliente() {
+		
+	}
+	
+	public Cliente(ClienteDto dto) {
+		super();
+		this.nome = dto.getNome();
+		this.telefone = dto.getTelefone();
+		this.email = dto.getEmail();
+		this.endereco = new Endereco(dto.getEndereco());
+
+	}
+
 	public Long getId() {
 		return id;
 	}

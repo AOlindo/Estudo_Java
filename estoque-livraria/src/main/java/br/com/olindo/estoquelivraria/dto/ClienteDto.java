@@ -1,15 +1,11 @@
-package br.com.olindo.estoquelivraria.model;
+package br.com.olindo.estoquelivraria.dto;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.MappedSuperclass;
+public class ClienteDto {
 
-@MappedSuperclass
-public class DadosPessoais {
-
-	protected String nome;
-	protected String telefone;
-	@Column(unique = true)
-	protected String email;
+	private String nome;
+	private String telefone;
+	private String email;
+	private CadastroEnderecoDto endereco;
 	
 	public String getNome() {
 		return nome;
@@ -28,6 +24,12 @@ public class DadosPessoais {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public CadastroEnderecoDto getEndereco() {
+		return endereco;
+	}
+	public void setEndereco(CadastroEnderecoDto enderecoDto) {
+		this.endereco = enderecoDto;
 	}
 	
 	

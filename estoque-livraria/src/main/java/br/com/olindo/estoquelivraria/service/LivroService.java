@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.olindo.estoquelivraria.dto.AtualizarLivroDto;
 import br.com.olindo.estoquelivraria.dto.LivroDto;
+import br.com.olindo.estoquelivraria.exceptions.ObjectNotFoundException;
 import br.com.olindo.estoquelivraria.model.Categoria;
 import br.com.olindo.estoquelivraria.model.Livro;
 import br.com.olindo.estoquelivraria.repository.LivroRepository;
@@ -35,7 +36,7 @@ public class LivroService {
 	}
 
 	public Livro obterLivroPorId(Long id) {
-		return livroRepository.findById(id).orElseThrow(() -> new RuntimeException());
+		return livroRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Livro não encontrado"));
 	}
 
 }
