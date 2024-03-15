@@ -35,5 +35,11 @@ public class ClienteService {
 		
 		clienteRepository.save(cliente);
 	}
+	
+	//Este metodo cria um objeto Cliente a partir dos dados fornecidos em um objeto ClienteDto
+	public Cliente fromDto(ClienteDto dto) {
+		return new Cliente(dto.getNome(), dto.getTelefone(), dto.getEmail(), dto.getEndereco());
+		
+	}
 
 }

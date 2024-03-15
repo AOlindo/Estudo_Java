@@ -13,6 +13,7 @@ import br.com.olindo.estoquelivraria.dto.LivroDto;
 import br.com.olindo.estoquelivraria.model.Cliente;
 import br.com.olindo.estoquelivraria.model.Livro;
 import br.com.olindo.estoquelivraria.service.ClienteService;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/clientes")
@@ -22,7 +23,8 @@ public class ClienteController {
 	private ClienteService clienteService;
 	
 	@PostMapping
-	public ResponseEntity<Cliente> cadastrarCliente(@RequestBody ClienteDto dto) {
+	public ResponseEntity<Cliente> cadastrarCliente(@Valid @RequestBody ClienteDto dto) {
+		Cliente obj = clienteService.fromDto(dto);
 		clienteService.inserirCliente(dto);
 		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
