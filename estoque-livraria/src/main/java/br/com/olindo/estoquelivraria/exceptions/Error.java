@@ -4,16 +4,14 @@ public class Error {
 
 	private Long timestamp;
 	private Integer status;
-	private String error;
-	private String message;
+	private String msg;
 	private String path;
 
-	public Error(Long timestamp, Integer status, String error, String message, String path) {
+	public Error(Long timestamp, Integer status, String msg, String path) {
 		super();
 		this.timestamp = timestamp;
 		this.status = status;
-		this.error = error;
-		this.message = message;
+		this.msg = msg;
 		this.path = path;
 
 	}
@@ -34,20 +32,12 @@ public class Error {
 		this.status = status;
 	}
 
-	public String getError() {
-		return error;
+	public String getMsg() {
+		return msg;
 	}
 
-	public void setError(String error) {
-		this.error = error;
-	}
-
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
+	public void setMsg(String msg) {
+		this.msg = msg;
 	}
 
 	public String getPath() {

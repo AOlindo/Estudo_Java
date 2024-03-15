@@ -37,6 +37,7 @@ public class ClienteService {
 	}
 	
 	//Este metodo cria um objeto Cliente a partir dos dados fornecidos em um objeto ClienteDto
+	//Converter um objeto Dto para uma entidade, no caso a entidade Cliente
 	public Cliente fromDto(ClienteDto dto) {
 		return new Cliente(dto.getNome(), dto.getTelefone(), dto.getEmail(), dto.getEndereco());
 		
