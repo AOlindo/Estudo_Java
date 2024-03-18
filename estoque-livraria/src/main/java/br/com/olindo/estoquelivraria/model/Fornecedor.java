@@ -1,5 +1,6 @@
 package br.com.olindo.estoquelivraria.model;
 
+import br.com.olindo.estoquelivraria.dto.CadastroEnderecoDto;
 import br.com.olindo.estoquelivraria.dto.FornecedorDto;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -26,6 +27,14 @@ public class Fornecedor extends DadosPessoais {
 		
 	}
 	
+	public Fornecedor(String nome, String telefone, String email, CadastroEnderecoDto endereco) {
+		super();
+		this.nome = nome;
+		this.telefone = telefone;
+		this.email = email;
+		this.endereco = new Endereco(endereco);
+	}
+
 	public Fornecedor(FornecedorDto dto) {
 		super();
 		this.nome = dto.getNome();

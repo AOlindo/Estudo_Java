@@ -3,10 +3,10 @@ package br.com.olindo.estoquelivraria.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.olindo.estoquelivraria.client.response.DadosCep;
 import br.com.olindo.estoquelivraria.dto.ClienteDto;
 import br.com.olindo.estoquelivraria.exceptions.RegraDeNegocioException;
 import br.com.olindo.estoquelivraria.model.Cliente;
-import br.com.olindo.estoquelivraria.model.DadosCep;
 import br.com.olindo.estoquelivraria.repository.ClienteRepository;
 
 @Service
@@ -37,7 +37,7 @@ public class ClienteService {
 	}
 	
 	//Este metodo cria um objeto Cliente a partir dos dados fornecidos em um objeto ClienteDto
-	//Converter um objeto Dto para uma entidade, no caso a entidade Cliente
+	//Converte um objeto Dto para uma entidade, no caso a entidade Cliente
 	public Cliente fromDto(ClienteDto dto) {
 		return new Cliente(dto.getNome(), dto.getTelefone(), dto.getEmail(), dto.getEndereco());
 		

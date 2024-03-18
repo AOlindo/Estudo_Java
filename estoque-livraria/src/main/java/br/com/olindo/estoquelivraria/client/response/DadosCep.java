@@ -1,4 +1,4 @@
-package br.com.olindo.estoquelivraria.model;
+package br.com.olindo.estoquelivraria.client.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

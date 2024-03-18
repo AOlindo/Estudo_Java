@@ -10,10 +10,10 @@ import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import br.com.olindo.estoquelivraria.client.ViaCep;
+import br.com.olindo.estoquelivraria.client.ViaCepClient;
+import br.com.olindo.estoquelivraria.client.response.DadosCep;
 import br.com.olindo.estoquelivraria.dto.CadastroEnderecoDto;
 import br.com.olindo.estoquelivraria.exceptions.RegraDeNegocioException;
-import br.com.olindo.estoquelivraria.model.DadosCep;
 
 @Service
 public class ViaCepService {
@@ -25,7 +25,7 @@ public class ViaCepService {
 //	private RestTemplate restTemplate;
 
 	@Autowired
-	private ViaCep viaCep;
+	private ViaCepClient viaCep;
 	
 	@Value("${url}")
 	private String url;

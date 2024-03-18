@@ -3,11 +3,11 @@ package br.com.olindo.estoquelivraria.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.olindo.estoquelivraria.client.response.DadosCep;
 import br.com.olindo.estoquelivraria.dto.ClienteDto;
 import br.com.olindo.estoquelivraria.dto.FornecedorDto;
 import br.com.olindo.estoquelivraria.exceptions.RegraDeNegocioException;
 import br.com.olindo.estoquelivraria.model.Cliente;
-import br.com.olindo.estoquelivraria.model.DadosCep;
 import br.com.olindo.estoquelivraria.model.Fornecedor;
 import br.com.olindo.estoquelivraria.repository.ClienteRepository;
 import br.com.olindo.estoquelivraria.repository.FornecedorRepository;
@@ -39,4 +39,8 @@ public class FornecedorService {
 		fornecedorRepository.save(fornecedor);
 	}
 
+	public Fornecedor fromDto(FornecedorDto dto) {
+		return new Fornecedor(dto.getNome(), dto.getTelefone(), dto.getEmail(), dto.getEndereco());
+		
+	}
 }

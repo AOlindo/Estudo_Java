@@ -25,7 +25,8 @@ public class LivroController {
 	private LivroService livroService;
 
 	@PostMapping
-	public ResponseEntity<Livro> cadastrarLivro(@RequestBody LivroDto dto) {
+	public ResponseEntity<Livro> cadastrarLivro(@Valid @RequestBody LivroDto dto) {
+//		livroService.fromDto(dto);
 		livroService.inserirLivro(dto);
 		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}

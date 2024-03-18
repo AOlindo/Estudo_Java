@@ -3,6 +3,7 @@ package br.com.olindo.estoquelivraria.model;
 import java.util.Objects;
 
 import br.com.olindo.estoquelivraria.dto.AtualizarLivroDto;
+import br.com.olindo.estoquelivraria.dto.CategoriaDto;
 import br.com.olindo.estoquelivraria.dto.LivroDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -41,13 +42,27 @@ public class Livro {
 
 	}
 
+	public Livro(String titulo, String autor, String isbn, Integer anoPublicacao, Categoria categoria,
+			Integer numeroPaginas, String editora, Double preco, Integer quantidade) {
+		super();
+		this.titulo = titulo;
+		this.autor = autor;
+		this.isbn = isbn;
+		this.anoPublicacao = anoPublicacao;
+		this.categoria = categoria;
+		this.numeroPaginas = numeroPaginas;
+		this.editora = editora;
+		this.preco = preco;
+		this.quantidade = quantidade;
+	}
+
+
 	public Livro(LivroDto dto) {
 		this.id = dto.getId();
-		this.titulo = dto.getTitulo();
+//		this.titulo = dto.getTitulo();
 		this.autor = dto.getAutor();
 		this.isbn = dto.getIsbn();
 		this.anoPublicacao = dto.getAnoPublicacao();
-		this.categoria = dto.getCategoria();
 		this.numeroPaginas = dto.getNumeroPaginas();
 		this.editora = dto.getEditora();
 		this.preco = dto.getPreco();

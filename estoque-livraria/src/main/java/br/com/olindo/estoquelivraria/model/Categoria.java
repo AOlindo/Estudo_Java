@@ -20,6 +20,14 @@ public class Categoria {
 	public Categoria() {
 
 	}
+	
+	
+	public Categoria(Long id, String nome) {
+		super();
+		this.id = id;
+		this.nome = nome;
+	}
+
 
 	public Categoria(CategoriaDto dto) {
 		this.id = dto.getId();
@@ -46,6 +54,18 @@ public class Categoria {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Categoria [id=");
+		builder.append(id);
+		builder.append(", nome=");
+		builder.append(nome);
+		builder.append("]");
+		return builder.toString();
 	}
 
 }

@@ -4,11 +4,12 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import br.com.olindo.estoquelivraria.model.DadosCep;
+
+import br.com.olindo.estoquelivraria.client.response.DadosCep;
 
 
 @FeignClient(value = "ViaCepClient", url = "${url}")
-public interface ViaCep {
+public interface ViaCepClient {
 	
 	@GetMapping("/{cep}/json")
 	public ResponseEntity<DadosCep> getEndereco(@PathVariable String cep);

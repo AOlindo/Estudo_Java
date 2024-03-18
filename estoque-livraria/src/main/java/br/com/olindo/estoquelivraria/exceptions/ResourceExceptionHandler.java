@@ -21,7 +21,7 @@ public class ResourceExceptionHandler {
 	}
 	@ExceptionHandler(RegraDeNegocioException.class)
 	public ResponseEntity<Error> regraNegocio(RegraDeNegocioException e, HttpServletRequest request) {
-		Error erro = new Error(System.currentTimeMillis(), HttpStatus.NOT_FOUND.value(), "Dado inválido",
+		Error erro = new Error(System.currentTimeMillis(), HttpStatus.NOT_FOUND.value(),e.getMessage(),
 				 request.getRequestURI());
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(erro);
 

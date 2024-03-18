@@ -1,10 +1,17 @@
 package br.com.olindo.estoquelivraria.dto;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotEmpty;
+
 public class FornecedorDto {
 	
+	@NotEmpty(message = "Preenchimento obrigatório")
 	private String nome;
+	@NotEmpty(message = "Preenchimento obrigatório")
 	private String telefone;
+	@NotEmpty(message = "Preenchimento obrigatório")
 	private String email;
+	@Valid
 	private CadastroEnderecoDto endereco;
 	
 	public String getNome() {
