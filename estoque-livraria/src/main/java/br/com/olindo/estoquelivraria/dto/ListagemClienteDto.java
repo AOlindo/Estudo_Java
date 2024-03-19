@@ -4,47 +4,52 @@ import br.com.olindo.estoquelivraria.model.Cliente;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
 
-public class ClienteDto {
+public class ListagemClienteDto {
 
-	@NotEmpty(message = "Preenchimento obrigatório")
+	private Long id;
 	private String nome;
-	@NotEmpty(message = "Preenchimento obrigatório")
 	private String telefone;
-	@NotEmpty(message = "O email deve ser válido")
 	private String email;
-	@Valid
-	private CadastroEnderecoDto endereco;
-	
-	public ClienteDto(Cliente cliente) {
+
+	public ListagemClienteDto(Cliente cliente) {
+		this.id = cliente.getId();
 		this.nome = cliente.getNome();
 		this.telefone = cliente.getTelefone();
 		this.email = cliente.getEmail();
 	}
 	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
 	public String getTelefone() {
 		return telefone;
 	}
+
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public CadastroEnderecoDto getEndereco() {
-		return endereco;
-	}
-	public void setEndereco(CadastroEnderecoDto enderecoDto) {
-		this.endereco = enderecoDto;
-	}
+
 	
-	
+
 }

@@ -1,7 +1,9 @@
 package br.com.olindo.estoquelivraria.model;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
+import br.com.olindo.estoquelivraria.dto.PedidoDto;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,24 +13,34 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "pedidos")
+@Table(name = "pedido")
 public class Pedido {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private LocalDate dataCompra;
-	
+	@Column(name = "data_compra")
+	private LocalDateTime dataCompra;
+
 	@ManyToOne
 	@JoinColumn(name = "livro_id")
 	private Livro livro;
-	
+
 	private Integer quantidade;
-	private Double precoUni;
 	
-	@ManyToOne
-	@JoinColumn(name = "fornecedor_id")
-	private Fornecedor fornecedor;
+	@Column(name = "preco_unico")
+	private Double precoUni;
+
+	public Pedido() {
+		
+	}
+	
+	public Pedido(PedidoDto pedidoDto) {
+		this.id = pedidoDto.getId();
+		this.dataCompra = LocalDateTime.now();
+		this.quantidade = pedidoDto.getQuantidade();
+		this.precoUni = pedidoDto.getPrecoUnico();
+	}
 
 	public Long getId() {
 		return id;
@@ -37,15 +49,7 @@ public class Pedido {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
-	public LocalDate getDataCompra() {
-		return dataCompra;
-	}
-
-	public void setDataCompra(LocalDate dataCompra) {
-		this.dataCompra = dataCompra;
-	}
-
+	
 	public Livro getLivro() {
 		return livro;
 	}
@@ -70,15 +74,12 @@ public class Pedido {
 		this.precoUni = precoUni;
 	}
 
-	public Fornecedor getFornecedor() {
-		return fornecedor;
+	public LocalDateTime getDataCompra() {
+		return dataCompra;
 	}
 
-	public void setFornecedor(Fornecedor fornecedor) {
-		this.fornecedor = fornecedor;
+	public void setDataCompra(LocalDateTime dataCompra) {
+		this.dataCompra = dataCompra;
 	}
-	
-	
-	
-	
+
 }

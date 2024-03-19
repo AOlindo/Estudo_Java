@@ -3,6 +3,8 @@ package br.com.olindo.estoquelivraria.model;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import br.com.olindo.estoquelivraria.dto.VendaDto;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,7 +16,7 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "vendas")
+@Table(name = "venda")
 public class Venda {
 	
 	@Id
@@ -25,12 +27,23 @@ public class Venda {
 	@ManyToOne
 	@JoinColumn(name = "livro_id")
 	private Livro livro;
+	@Column(name = "quantidade_vendida")
 	private Integer quantidadeVendida;
 	private Double preco;
 	
 	@ManyToOne
 	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
+	
+	public Venda() {
+		
+	}
+	
+	public Venda (VendaDto dto) {
+		this.dataVenda = LocalDate.now();
+		this.quantidadeVendida = dto.getQuantidadeVendida();
+		this.preco = dto.getPreco();
+	}
 
 	public Long getId() {
 		return id;

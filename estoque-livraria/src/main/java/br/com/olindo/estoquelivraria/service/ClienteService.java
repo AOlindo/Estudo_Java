@@ -5,8 +5,10 @@ import org.springframework.stereotype.Service;
 
 import br.com.olindo.estoquelivraria.client.response.DadosCep;
 import br.com.olindo.estoquelivraria.dto.ClienteDto;
+import br.com.olindo.estoquelivraria.exceptions.ObjectNotFoundException;
 import br.com.olindo.estoquelivraria.exceptions.RegraDeNegocioException;
 import br.com.olindo.estoquelivraria.model.Cliente;
+import br.com.olindo.estoquelivraria.model.Livro;
 import br.com.olindo.estoquelivraria.repository.ClienteRepository;
 
 @Service
@@ -41,6 +43,10 @@ public class ClienteService {
 	public Cliente fromDto(ClienteDto dto) {
 		return new Cliente(dto.getNome(), dto.getTelefone(), dto.getEmail(), dto.getEndereco());
 		
+	}
+	
+	public Cliente obterClientePorId(Long id) {
+		return clienteRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Livro não encontrado"));
 	}
 
 }

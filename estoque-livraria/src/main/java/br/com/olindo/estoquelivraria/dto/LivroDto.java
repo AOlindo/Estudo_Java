@@ -1,5 +1,6 @@
 package br.com.olindo.estoquelivraria.dto;
 
+import br.com.olindo.estoquelivraria.model.Livro;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
@@ -18,12 +19,18 @@ public class LivroDto {
 	@NotEmpty(message = "Preenchimento obrigatório")
 	private String editora;
 	@NotNull
-	private Double preco;
-	@NotNull
-	private Integer quantidade;
-
+	
 	public LivroDto() {
 
+	}
+
+	public LivroDto(Livro livro) {
+		this.autor = livro.getAutor();
+		this.isbn = livro.getIsbn();
+		this.anoPublicacao = livro.getAnoPublicacao();
+		this.numeroPaginas = livro.getNumeroPaginas();
+		this.editora = livro.getEditora();
+		
 	}
 
 	public Long getId() {
@@ -72,22 +79,6 @@ public class LivroDto {
 
 	public void setEditora(String editora) {
 		this.editora = editora;
-	}
-
-	public Double getPreco() {
-		return preco;
-	}
-
-	public void setPreco(Double preco) {
-		this.preco = preco;
-	}
-
-	public Integer getQuantidade() {
-		return quantidade;
-	}
-
-	public void setQuantidade(Integer quantidade) {
-		this.quantidade = quantidade;
 	}
 
 	public Long getCategoriaId() {

@@ -19,6 +19,11 @@ public class Endereco {
 	private String uf;
 	private String cep;
 	private String complemento;
+	
+	public Endereco() {
+		
+	}
+	
 
 	public Endereco(CadastroEnderecoDto enderecoDto) {
 		this.numero = enderecoDto.getNumero();

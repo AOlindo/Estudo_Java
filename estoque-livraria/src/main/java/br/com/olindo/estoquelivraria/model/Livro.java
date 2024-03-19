@@ -35,15 +35,13 @@ public class Livro {
 	@Column(name = "numero_paginas")
 	private Integer numeroPaginas;
 	private String editora;
-	private Double preco;
-	private Integer quantidade;
 
 	public Livro() {
 
 	}
 
 	public Livro(String titulo, String autor, String isbn, Integer anoPublicacao, Categoria categoria,
-			Integer numeroPaginas, String editora, Double preco, Integer quantidade) {
+			Integer numeroPaginas, String editora) {
 		super();
 		this.titulo = titulo;
 		this.autor = autor;
@@ -52,8 +50,6 @@ public class Livro {
 		this.categoria = categoria;
 		this.numeroPaginas = numeroPaginas;
 		this.editora = editora;
-		this.preco = preco;
-		this.quantidade = quantidade;
 	}
 
 
@@ -65,8 +61,7 @@ public class Livro {
 		this.anoPublicacao = dto.getAnoPublicacao();
 		this.numeroPaginas = dto.getNumeroPaginas();
 		this.editora = dto.getEditora();
-		this.preco = dto.getPreco();
-		this.quantidade = dto.getQuantidade();
+		
 	}
 
 	public void atualizaLivro(AtualizarLivroDto dto) {
@@ -84,12 +79,6 @@ public class Livro {
 		}
 		if (dto.editora() != null) {
 			this.editora = dto.editora();
-		}
-		if (dto.preco() != null) {
-			this.preco = dto.preco();
-		}
-		if (dto.quantidade() != null) {
-			this.quantidade = dto.quantidade();
 		}
 	}
 
@@ -155,22 +144,6 @@ public class Livro {
 
 	public void setEditora(String editora) {
 		this.editora = editora;
-	}
-
-	public Double getPreco() {
-		return preco;
-	}
-
-	public void setPreco(Double preco) {
-		this.preco = preco;
-	}
-
-	public Integer getQuantidade() {
-		return quantidade;
-	}
-
-	public void setQuantidade(Integer quantidade) {
-		this.quantidade = quantidade;
 	}
 
 	@Override

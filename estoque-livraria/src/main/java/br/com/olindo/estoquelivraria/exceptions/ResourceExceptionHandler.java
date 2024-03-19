@@ -14,7 +14,7 @@ public class ResourceExceptionHandler {
 
 	@ExceptionHandler(ObjectNotFoundException.class)
 	public ResponseEntity<Error> objectNotFound(ObjectNotFoundException e, HttpServletRequest request) {
-		Error erro = new Error(System.currentTimeMillis(), HttpStatus.NOT_FOUND.value(), "Dado não encontrado",
+		Error erro = new Error(System.currentTimeMillis(), HttpStatus.NOT_FOUND.value(), e.getMessage(),
 				 request.getRequestURI());
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(erro);
 
@@ -28,7 +28,7 @@ public class ResourceExceptionHandler {
 	}
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ResponseEntity<Error> validacao(MethodArgumentNotValidException e, HttpServletRequest request) {
-		ValidationError validationError = new ValidationError(System.currentTimeMillis(), HttpStatus.NOT_FOUND.value(), "Erro de validação",
+		ValidationError validationError = new ValidationError(System.currentTimeMillis(), HttpStatus.NOT_FOUND.value(), e.getMessage(),
 				request.getRequestURI());
 		for(FieldError x : e.getBindingResult().getFieldErrors()) {
 			validationError.addError(x.getField(), x.getDefaultMessage());
