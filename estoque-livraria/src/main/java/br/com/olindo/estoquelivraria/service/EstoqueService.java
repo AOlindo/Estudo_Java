@@ -1,10 +1,13 @@
 package br.com.olindo.estoquelivraria.service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.olindo.estoquelivraria.dto.EstoqueDto;
-import br.com.olindo.estoquelivraria.exceptions.ObjectNotFoundException;
+import br.com.olindo.estoquelivraria.dto.ListagemEstoqueDto;
 import br.com.olindo.estoquelivraria.model.Estoque;
 import br.com.olindo.estoquelivraria.model.Livro;
 import br.com.olindo.estoquelivraria.repository.EstoqueRepository;
@@ -14,8 +17,6 @@ public class EstoqueService {
 
 	@Autowired
 	private EstoqueRepository estoqueRepository;
-
-	private VendaService vendaService;
 
 	@Autowired
 	private LivroService livroService;
@@ -35,6 +36,12 @@ public class EstoqueService {
 
 	public void salvarEstoque(Estoque estoque) {
 		estoqueRepository.save(estoque);
+	}
+	
+	public List<ListagemEstoqueDto> listarEstoque(){
+		List<ListagemEstoqueDto> estoque = estoqueRepository.findAll().stream().map(estoques -> new ListagemEstoqueDto(estoques)).collect(Collectors.toList());
+		return estoque;
+		
 	}
 
 }

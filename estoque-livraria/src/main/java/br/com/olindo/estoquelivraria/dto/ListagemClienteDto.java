@@ -10,14 +10,16 @@ public class ListagemClienteDto {
 	private String nome;
 	private String telefone;
 	private String email;
+	private ListagemEnderecoDto enderecoId;
 
 	public ListagemClienteDto(Cliente cliente) {
 		this.id = cliente.getId();
 		this.nome = cliente.getNome();
 		this.telefone = cliente.getTelefone();
 		this.email = cliente.getEmail();
+		this.enderecoId = new ListagemEnderecoDto(cliente.getEndereco());
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -50,6 +52,12 @@ public class ListagemClienteDto {
 		this.email = email;
 	}
 
-	
+	public ListagemEnderecoDto getEnderecoId() {
+		return enderecoId;
+	}
+
+	public void setEnderecoId(ListagemEnderecoDto enderecoId) {
+		this.enderecoId = enderecoId;
+	}
 
 }

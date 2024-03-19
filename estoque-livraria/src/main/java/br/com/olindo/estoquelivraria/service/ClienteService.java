@@ -1,14 +1,17 @@
 package br.com.olindo.estoquelivraria.service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.olindo.estoquelivraria.client.response.DadosCep;
 import br.com.olindo.estoquelivraria.dto.ClienteDto;
+import br.com.olindo.estoquelivraria.dto.ListagemClienteDto;
 import br.com.olindo.estoquelivraria.exceptions.ObjectNotFoundException;
 import br.com.olindo.estoquelivraria.exceptions.RegraDeNegocioException;
 import br.com.olindo.estoquelivraria.model.Cliente;
-import br.com.olindo.estoquelivraria.model.Livro;
 import br.com.olindo.estoquelivraria.repository.ClienteRepository;
 
 @Service
@@ -49,4 +52,9 @@ public class ClienteService {
 		return clienteRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Livro não encontrado"));
 	}
 
+	public List<ListagemClienteDto> listarCliente(){
+		List<ListagemClienteDto> cliente = clienteRepository.findAll().stream().map(clientes -> new ListagemClienteDto(clientes)).collect(Collectors.toList());
+		return cliente;
+		
+	}
 }

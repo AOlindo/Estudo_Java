@@ -14,7 +14,6 @@ public class ListagemVendasDto {
 		this.quantidadeVendida = venda.getQuantidadeVendida();
 		this.preco = venda.getPreco();
 		this.clienteId = new ListagemClienteDto(venda.getCliente());
-
 	}
 
 	public Integer getQuantidadeVendida() {

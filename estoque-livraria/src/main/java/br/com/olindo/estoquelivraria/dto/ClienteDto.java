@@ -19,6 +19,7 @@ public class ClienteDto {
 		this.nome = cliente.getNome();
 		this.telefone = cliente.getTelefone();
 		this.email = cliente.getEmail();
+		this.endereco = new CadastroEnderecoDto();
 	}
 	
 	public String getNome() {
